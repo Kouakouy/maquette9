@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Monde du Surf</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .wave-segment {
+            transition: transform 0.1s;
+            will-change: transform;
+            margin-top: -2px;
+        }
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+        }
+        .navbar {
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+        .navbar.floating {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3B82F6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .logo {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="navbar fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="logo text-2xl font-bold text-blue-600 flex items-center gap-2">
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.0744 12.7559C20.1461 12.6747 20.2271 12.5997 20.3029 12.5177C21.7399 10.9108 22.0874 8.66027 21.2147 6.73435C20.342 4.80842 18.3926 3.5 16.2857 3.5H10.4762C8.36929 3.5 6.41993 4.80842 5.54719 6.73435C4.67445 8.66027 5.022 10.9108 6.459 12.5177C6.53478 12.5997 6.61577 12.6747 6.68743 12.7559M20.0744 12.7559C19.9184 12.9375 19.7265 13.0876 19.5114 13.1976C17.5127 14.2388 15.8006 14.5 14.1429 14.5C12.4851 14.5 10.773 14.2388 8.77434 13.1976C8.55918 13.0876 8.36729 12.9375 8.21129 12.7559M20.0744 12.7559L21.5 20.5H2.5L3.92557 12.7559" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Le Monde du Surf
+                </a>
+                <nav>
+                    <ul class="flex space-x-8">
+                        <li><a href="#" class="nav-link text-gray-600 hover:text-blue-500 active">Accueil</a></li>
+                        <li><a href="#histoire" class="nav-link text-gray-600 hover:text-blue-500">Histoire</a></li>
+                        <li><a href="#techniques" class="nav-link text-gray-600 hover:text-blue-500">Techniques</a></li>
+                        <li><a href="#spots" class="nav-link text-gray-600 hover:text-blue-500">Spots</a></li>
+                        <li><a href="#culture" class="nav-link text-gray-600 hover:text-blue-500">Culture</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section flex items-center justify-center relative">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-5xl font-bold text-white mb-6">Découvrez la Magie du Surf</h2>
+            <p class="text-xl text-white mb-8">Un sport ancestral qui unit l'homme et l'océan</p>
+            <a href="#histoire" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition inline-block">En savoir plus</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- Histoire Section -->
+        <section id="histoire" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">L'Histoire du Surf</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="images/pexels-guy-kawasaki-783630-1654498.jpg" alt="Histoire du surf" class="rounded-lg shadow-lg w-full h-[400px] object-cover">
+                </div>
+                <div class="space-y-6">
+                    <p class="text-gray-600">Le surf trouve ses origines dans la culture polynésienne, où il était pratiqué par les rois et le peuple. Cette pratique ancestrale était bien plus qu'un simple sport : c'était une véritable expression culturelle et spirituelle.</p>
+                    <p class="text-gray-600">Au début du XXe siècle, le légendaire Duke Kahanamoku a contribué à populariser le surf dans le monde entier, transformant cette pratique traditionnelle hawaïenne en un sport mondial.</p>
+                    <p class="text-gray-600">Aujourd'hui, le surf est devenu un sport olympique, marquant ainsi son évolution d'une pratique culturelle à un sport de compétition reconnu mondialement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Techniques Section -->
+        <section id="techniques" class="mb-20 bg-blue-50 -mx-4 px-4 py-16">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Les Techniques du Surf</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1519789110007-0e751882be76?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Technique débutant" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-3">Les Bases</h3>
+                        <p class="text-gray-600">La position sur la planche, le "pop-up", et la lecture des vagues sont les fondamentaux essentiels pour débuter en surf.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Technique intermédiaire" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-3">Manœuvres</h3>
+                        <p class="text-gray-600">Bottom turn, cut-back, roller... Découvrez les différentes manœuvres qui permettent d'exploiter la puissance de la vague.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1505459668311-8dfac7952bf0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Technique avancée" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-3">Style Aérien</h3>
+                        <p class="text-gray-600">Les figures aériennes représentent le summum du surf moderne, alliant technique, créativité et spectacle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spots Section -->
+        <section id="spots" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Les Spots Mythiques</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60" alt="Pipeline" class="w-full h-80 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                        <div class="text-white">
+                            <h3 class="text-xl font-bold mb-2">Pipeline, Hawaii</h3>
+                            <p>La vague la plus mythique au monde, célèbre pour ses tubes puissants</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-lg group">
+                    <img src="images/pexels-guy-kawasaki-783630-1654498.jpg" alt="Teahupoo" class="w-full h-80 object-cover transition group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+                        <div class="text-white">
+                            <h3 class="text-xl font-bold mb-2">Teahupoo, Tahiti</h3>
+                            <p>Une vague d'une puissance exceptionnelle sur le récif tahitien</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culture Section -->
+        <section id="culture" class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">La Culture Surf</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="images/pexels-chelsey-horne-225035-757133.jpg" alt="Mode de vie" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-3">Mode de Vie</h3>
+                    <p class="text-gray-600">Le surf n'est pas qu'un sport, c'est un véritable mode de vie en harmonie avec l'océan et la nature.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1506797220058-533e019ac7fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Communauté" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-3">Communauté</h3>
+                    <p class="text-gray-600">Les surfeurs forment une communauté mondiale unie par leur passion pour l'océan et les vagues.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Respect" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-3">Respect</h3>
+                    <p class="text-gray-600">Le respect de l'océan, de l'environnement et des autres surfeurs est au cœur de la culture surf.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with Wave Animation -->
+    <footer class="bg-black text-white relative flex flex-col w-full h-full justify-between lg:h-screen select-none">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between w-full gap-4 pb-24 pt-8 px-4">
+            <div class="space-y-2">
+                <ul class="flex flex-wrap gap-4">
+                    <li><a href="/terms" class="text-sm hover:text-sky-400">Mentions légales</a></li>
+                    <li><a href="/privacy-policy" class="text-sm hover:text-sky-400">Politique de confidentialité</a></li>
+                </ul>
+                <p class="text-sm mt-4 flex items-center gap-x-1">
+                    <svg class="size-3" viewBox="0 0 80 80">
+                        <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M67.4307 11.5693C52.005 -3.85643 26.995 -3.85643 11.5693 11.5693C-3.85643 26.995 -3.85643 52.005 11.5693 67.4307C26.995 82.8564 52.005 82.8564 67.4307 67.4307C82.8564 52.005 82.8564 26.995 67.4307 11.5693ZM17.9332 17.9332C29.8442 6.02225 49.1558 6.02225 61.0668 17.9332C72.9777 29.8442 72.9777 49.1558 61.0668 61.0668C59.7316 62.4019 58.3035 63.5874 56.8032 64.6232L56.8241 64.6023C46.8657 54.6439 46.8657 38.4982 56.8241 28.5398L58.2383 27.1256L51.8744 20.7617L50.4602 22.1759C40.5018 32.1343 24.3561 32.1343 14.3977 22.1759L14.3768 22.1968C15.4126 20.6965 16.5981 19.2684 17.9332 17.9332ZM34.0282 38.6078C25.6372 38.9948 17.1318 36.3344 10.3131 30.6265C7.56889 39.6809 9.12599 49.76 14.9844 57.6517L34.0282 38.6078ZM21.3483 64.0156C29.24 69.874 39.3191 71.4311 48.3735 68.6869C42.6656 61.8682 40.0052 53.3628 40.3922 44.9718L21.3483 64.0156Z"></path>
+                    </svg>
+                    Wave Rider 2024. Tous droits réservés
+                </p>
+            </div>
+            <div class="space-y-4">
+                <ul class="flex flex-wrap gap-4">
+                    <li><a href="/careers" class="text-sm hover:text-sky-400">Carrières</a></li>
+                    <li><a href="/manifesto" class="text-sm hover:text-sky-400">Manifeste</a></li>
+                    <li><a href="/help-center" class="text-sm hover:text-sky-400">Centre d'aide</a></li>
+                    <li><a href="https://x.com" class="text-sm hover:text-sky-400">Twitter</a></li>
+                    <li><a href="https://www.instagram.com" class="text-sm hover:text-sky-400">Instagram</a></li>
+                </ul>
+                <div class="text-right mt-4">
+                    <button class="text-sm hover:underline inline-flex items-center">Retour en haut</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave Animation Container -->
+        <div id="waveContainer" aria-hidden="true" style="overflow:hidden;height:200px">
+            <div style="margin-top:0px">
+                <!-- Wave segments will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const waveContainer = document.querySelector('#waveContainer div');
+            const segmentCount = 23;
+            const baseHeight = 1;
+            
+            // Create wave segments
+            for (let i = 0; i < segmentCount; i++) {
+                const segment = document.createElement('div');
+                segment.className = 'wave-segment';
+                segment.style.height = `${baseHeight + i}px`;
+                segment.style.backgroundColor = 'rgb(255, 255, 255)';
+                waveContainer.appendChild(segment);
+            }
+            
+            // Animate the wave
+            function animateWave() {
+                const segments = document.querySelectorAll('.wave-segment');
+                const time = Date.now() * 0.001; // Get time in seconds
+                
+                segments.forEach((segment, index) => {
+                    // Calculate offset for each segment to create wave effect
+                    const offset = index * 0.3;
+                    const waveHeight = Math.sin(time + offset) * 30 + 100;
+                    
+                    // Apply the transformation
+                    segment.style.transform = `translateY(${waveHeight}px)`;
+                });
+                
+                requestAnimationFrame(animateWave);
+            }
+            
+            // Start animation
+            animateWave();
+            
+            // Navbar animation
+            const navbar = document.querySelector('.navbar');
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+
+            // Initialize navbar state
+            updateNavbar();
+
+            window.addEventListener('scroll', () => {
+                lastScrollY = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateNavbar();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            function updateNavbar() {
+                // Add floating effect when scrolling down
+                if (lastScrollY > 50) {
+                    navbar.classList.add('floating');
+                } else {
+                    navbar.classList.remove('floating');
+                }
+
+                // Hide navbar when scrolling down, show when scrolling up
+                if (lastScrollY > 100) {
+                    const currentScrollY = window.scrollY;
+                    if (currentScrollY > lastScrollY) {
+                        navbar.classList.add('hidden');
+                    } else {
+                        navbar.classList.remove('hidden');
+                    }
+                } else {
+                    navbar.classList.remove('hidden');
+                }
+            }
+
+            // Active link highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (window.scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Back to top button
+            document.querySelector('footer button').addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
